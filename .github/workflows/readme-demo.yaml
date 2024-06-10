@@ -1,0 +1,22 @@
+name: Trigger on README.md Change
+
+# Specify the events that will trigger this workflow
+on:
+  push:
+    paths:
+      - 'README.md'  # Triggers only if README.md is changed
+  pull_request:
+    paths:
+      - 'README.md'  # Triggers only if README.md is changed
+
+jobs:
+  readme_update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Notify about README.md change
+        run: |
+          echo "The README.md file was updated."
